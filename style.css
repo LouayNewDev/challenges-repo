@@ -43,10 +43,6 @@ header .brand {
   -webkit-text-stroke-width: 3px;
   -webkit-text-stroke-color: rgb(250, 174, 34);
 }
-header .brand:hover {
-
-}
-
 
 header .navigation {
   position: relative;
@@ -185,6 +181,9 @@ section {
 }
 
 /* About */
+.about {
+  background-color: #ececec;
+}
 .title {
   width: 100%;
   display: flex;
@@ -272,7 +271,7 @@ section {
 /* Skills Section */
 
 .skills {
-  background-color: black;
+  background-color: #000016;
 }
 
 .skills .content {
@@ -359,6 +358,9 @@ section {
 }
 
 /* Services */
+.services {
+  background-color: #ececec;
+}
 
 .services .content {
   display: flex;
@@ -461,7 +463,9 @@ section {
 }
 
 /* Contact */
-
+.contact {
+  background-color: #ececec;
+}
 .contact .content {
   display: flex;
   justify-content: center;
