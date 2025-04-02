@@ -256,6 +256,15 @@ section {
   height: 100%;
   object-fit: cover;
   border-radius: 50% 20% / 10% 40%;
+  box-shadow: 0 0 25px rgb(72, 166, 167);
+  transition: 0.3s ease;
+
+}
+.about .content .col-left .img-card img:hover {
+  transform: scale(1.05);
+  box-shadow: 0 0 25px rgb(72, 166, 167) 
+            , 0 0 50px rgb(72, 166, 167) 
+            , 0 0 75px rgb(72, 166, 167);
 }
 
 .about .content .col-right .content-title {
