@@ -1,0 +1,72 @@
+.services {
+    background-color: #ececec;
+}
+
+.services .content {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  flex-direction: row;
+  margin-top: 20px;
+}
+
+.title p {
+  font-size: 1em;
+  width: 80%;
+  text-align: center;
+}
+
+.services .content .card {
+  background-color: #fff;
+  width: 340px;
+  margin: 10px;
+  padding: 25px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  border-radius: 10px;
+  box-shadow: 0 5px 25px rgba(1 1 1/15%);
+  transition: 0.3s linear;
+}
+
+.services .content .card .service-icon {
+  color: rgb(72, 166, 167);
+  font-size: 8rem;
+  text-align: center;
+  transition: 0.3s linear;
+}
+
+.services .content .card .info {
+  text-align: center;
+}
+
+.services .content .card .info h3 {
+  color: rgb(72, 166, 167);
+  font-size: 1.2rem;
+  font-weight: 700;
+  margin: 10px;
+  transition: 0.3s linear;
+}
+
+.services .content .card:hover {
+  background-color: rgb(72, 166, 167);
+  color: rgb(242, 239, 231);
+}
+
+.services .content .card:hover .service-icon,
+.services .content .card:hover .info h3 {
+  transform: translateY(-10px);
+  color: rgb(242, 239, 231);
+}
+
+
+.flip{
+    backface-visibility: hidden;
+    transition: all 5s ease;
+    transform-style: preserve-3d;
+    position: relative;
+}
+.flip:hover{
+    transform: rotatey(180deg);
+}
