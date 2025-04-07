@@ -12,6 +12,15 @@
     <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.2/css/all.min.css">
     <script src="script.js"></script>
+    <script type="text/javascript"src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
+    <script type="text/javascript">
+    (function(){
+        emailjs.init({
+            publicKey: "OAE1ZTaHuj5O2XNL8",
+        });
+    })();
+    </script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 </head>
 <body>
 
@@ -250,10 +259,13 @@
                 <input id="Email" type="text" name="" value="" placeholder="Email">
               </div>
               <div class="input-box">
+                <input id="Subject" type="text" name="" value="" placeholder="Subject">
+              </div>
+              <div class="input-box">
                 <textarea id="Message" name="name" rows="8" cols="80" placeholder="Message"></textarea>
               </div>
               <div class="input-box">
-                <inputtvyulk type="submit" class="send-btn" name="" value="Send">
+                <button class="send-btn" onclick="sendmail()">Send</button>
               </div>
             </div>
           </div>
