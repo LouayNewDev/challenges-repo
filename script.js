@@ -7,11 +7,17 @@ function sendmail () {
     }
     emailjs.send("service_6ea5y2o", "template_q2xcmpo", param).then(function (res) {
         Swal.fire({
-            title: "Good job!",
-            text: "You clicked the button!",
-            icon: "success"
+            title: "Success!",
+            text: "Your message has been sent successfully!",
+            icon: "success",
+            timer:3000,
+            showConfirmButton: false
         })
-        console.log(param)
+        document.getElementById("Name").value = "";
+        document.getElementById("Email").value = "";
+        document.getElementById("Message").value = "";
+        document.getElementById("Subject").value = "";
+
     }
     )
 }
