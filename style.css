@@ -11,6 +11,7 @@
   margin: 0;
   font-family: "Poppins", sans-serif;
   box-sizing: border-box;
+  scroll-behavior: smooth;
 }
 
 body {
@@ -130,6 +131,97 @@ section {
 .animated-text h3:nth-child(1) {
   animation: text-move 6s infinite ease-out;
 }
+
+
+
+.content-container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 50px;
+  flex-direction: row;
+  position: relative; /* To position loaders relative to this container */
+}
+
+.profile-pic {
+  position: relative;
+  width: 300px;  /* Adjust as needed */
+  height: 300px; /* Adjust as needed */
+  margin-left: 250px;
+}
+
+.profile-pic img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 50%;
+  border: 5px solid #000016;
+  position: relative;  
+  z-index: 5;
+  box-shadow: 0 0 25px rgb(30, 36, 36);
+}
+
+.loader{
+  box-shadow: 0 0 25px rgb(72, 166, 167);
+
+}
+
+.loader:nth-child(1) {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 110%; 
+  height: 110%; 
+  border-radius: 50%;
+  background-image: conic-gradient(from var(--angel), rgb(72, 166, 167) 0%, rgb(72, 166, 167) 7%, #000016 7%, #000016 100%);
+  animation: spin 10s linear infinite;
+  transform: translate(-50%, -50%);
+  z-index: 4;
+}
+
+.loader:nth-child(2) {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 120%; 
+  height: 120%; 
+  border-radius: 50%;
+  background-image: conic-gradient(from var(--angel), rgb(72, 166, 167) 0%, rgb(72, 166, 167) 7%, #000016 7%, #000016 100%);
+  animation: spin 7s ease-in infinite reverse;
+  transform: translate(-50%, -50%);
+  z-index: 3;
+}
+
+
+.loader:nth-child(3) {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 130%; 
+  height: 130%; 
+  border-radius: 50%;
+  background-image: conic-gradient(from var(--angel), rgb(72, 166, 167) 0%, rgb(72, 166, 167) 7%, #000016 7%, #000016 100%);
+  animation: spin 4s steps(5) infinite;
+  transform: translate(-50%, -50%);
+  z-index: 2;
+}
+
+
+@property --angel {
+  syntax: "<angle>";
+  initial-value: 0deg;
+  inherits: false;
+}
+@keyframes spin {
+  from {
+      --angel: 0deg;
+  }
+  to {
+      --angel: 360deg;
+  }
+}
+
+
 
 @keyframes text-move {
   0%,
@@ -700,6 +792,15 @@ section {
     font-size: 2.2em;
   }
 
+  .content-container {
+    flex-direction: column;
+    text-align: center;
+  }
+
+  .profile-pic {
+    margin-top: 30px;
+  }
+
   .section-title {
     font-size: 1.8em;
   }
@@ -755,3 +856,5 @@ section {
   opacity: 0;
   transition: all 0.3s ease;
 }
+
+
