@@ -201,7 +201,7 @@ section {
   height: 130%; 
   border-radius: 50%;
   background-image: conic-gradient(from var(--angel), rgb(72, 166, 167) 0%, rgb(72, 166, 167) 7%, #000016 7%, #000016 100%);
-  animation: spin 4s steps(5) infinite;
+  animation: spin 3s steps(10) infinite reverse;
   transform: translate(-50%, -50%);
   z-index: 2;
 }
@@ -273,9 +273,23 @@ section {
 }
 
 .media-icons a {
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 1rem;
+  padding: 1rem;
+  background-color:transparent;
+  border: solid 2px rgb(72, 166, 167);
+  border-radius: 50%;
+  color: rgb(72, 166, 167);
+  margin: 3rem 0.5rem;
+  transition: 0.3s ease-in-out;
+  /* Removed will-change property to ensure transform works */
+}
+.media-icons a:hover{
   color: rgb(242, 239, 231);
-  font-size: 25px;
-  margin-right: 30px;
+  background-color: rgb(72, 166, 167);
+  transform:scale(1.2);
 }
 
 /* About */
