@@ -5,7 +5,16 @@
   font-weight: normal;
   font-style: normal;
 }
+:root {
+  --light-bg-Color: #d6d6d6;
+  --light-primary-color: rgb(72, 166, 167);
+  --light-text-color: black;
+  --dark-bg-Color: #000016;
+  --dark-bg-Color2: #101010;
+  --dark-text-color: rgb(242, 239, 231);
+  --dark-primary-color: #004a50;
 
+}
 * {
   padding: 0;
   margin: 0;
