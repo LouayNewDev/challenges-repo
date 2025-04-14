@@ -6,14 +6,13 @@
   font-style: normal;
 }
 :root {
-  --light-bg-Color: #d6d6d6;
+  --light-bg-Color: #b6d6d6;
   --light-primary-color: rgb(72, 166, 167);
   --light-text-color: black;
   --dark-bg-Color: #000016;
   --dark-bg-Color2: #101010;
   --dark-text-color: rgb(242, 239, 231);
   --dark-primary-color: #004a50;
-
 }
 * {
   padding: 0;
@@ -44,7 +43,7 @@ header {
 }
 
 header.sticky {
-  background-color: rgb(72, 166, 167);
+  background-color: var(--light-primary-color);
   padding: 10px 200px;
 }
 
@@ -55,10 +54,10 @@ header .brand {
   text-decoration: none;
   letter-spacing: 3px;
   font-family: "Winkey Rough", cursive;
-  color: rgb(242, 239, 231);
+  color: var(--dark-text-color);
   -webkit-text-fill-color: white;
   -webkit-text-stroke-width: 0.1rem;
-  -webkit-text-stroke-color: rgb(72, 166, 167);
+  -webkit-text-stroke-color: var(--light-primary-color);
 }
 
 header .navigation {
@@ -67,7 +66,7 @@ header .navigation {
 
 header .navigation a {
   position: relative;
-  color: rgb(242, 239, 231);
+  color: var(--dark-text-color);
   font-size: 1em;
   text-decoration: none;
   font-weight: 600;
@@ -75,7 +74,7 @@ header .navigation a {
 }
 
 header .sticky .navigation a:hover {
-  color: black;
+  color: var(--light-text-color);
 }
 .navigation a::after {
   content: "";
@@ -84,9 +83,9 @@ header .sticky .navigation a:hover {
   bottom: -2px;
   width: 100%;
   height: 2px;
-  background-color: white;
+  background-color: var(--dark-text-color);
   transform: scaleX(0);
-  transform-origin: center; /* start animation from the center */
+  transform-origin: center;
   transition: 0.3s ease-in-out;
 }
 .navigation a:hover::after {
@@ -103,7 +102,7 @@ section {
   height: 100vh;
   display: flex;
   align-items: center;
-  background-color: #000016;
+  background-color: var(--dark-bg-Color);
 }
 
 .main .content {
@@ -111,7 +110,7 @@ section {
 }
 
 .main .content h2 {
-  color: rgb(242, 239, 231);
+  color: var(--dark-text-color);
   font-size: 2em;
   font-weight: 500;
 }
@@ -129,7 +128,11 @@ section {
 
 .animated-text h3 {
   color: transparent;
-  background: linear-gradient(to left, rgb(72, 166, 167), rgb(242, 239, 231));
+  background: linear-gradient(
+    to left,
+    var(--light-primary-color),
+    var(--dark-text-color)
+  );
   background-clip: text;
   -webkit-background-clip: text;
   font-size: 3em;
@@ -148,13 +151,13 @@ section {
   justify-content: space-between;
   gap: 50px;
   flex-direction: row;
-  position: relative; /* To position loaders relative to this container */
+  position: relative;
 }
 
 .profile-pic {
   position: relative;
-  width: 300px; /* Adjust as needed */
-  height: 300px; /* Adjust as needed */
+  width: 300px;
+  height: 300px;
   margin-left: 250px;
 }
 
@@ -163,14 +166,14 @@ section {
   height: 100%;
   object-fit: cover;
   border-radius: 50%;
-  border: 5px solid #000016;
+  border: 5px solid var(--dark-bg-Color);
   position: relative;
   z-index: 5;
-  box-shadow: 0 0 25px rgb(30, 36, 36);
+  box-shadow: 0 0 25px var(--dark-bg-Color2);
 }
 
 .loader {
-  box-shadow: 0 0 25px rgb(72, 166, 167);
+  box-shadow: 0 0 25px var(--light-primary-color);
 }
 
 .loader:nth-child(1) {
@@ -182,10 +185,10 @@ section {
   border-radius: 50%;
   background-image: conic-gradient(
     from var(--angel),
-    rgb(72, 166, 167) 0%,
-    rgb(72, 166, 167) 7%,
-    #000016 7%,
-    #000016 100%
+    var(--light-primary-color) 0%,
+    var(--light-primary-color) 7%,
+    var(--dark-bg-Color) 7%,
+    var(--dark-bg-Color) 100%
   );
   animation: spin 10s linear infinite;
   transform: translate(-50%, -50%);
@@ -201,10 +204,10 @@ section {
   border-radius: 50%;
   background-image: conic-gradient(
     from var(--angel),
-    rgb(72, 166, 167) 0%,
-    rgb(72, 166, 167) 7%,
-    #000016 7%,
-    #000016 100%
+    var(--light-primary-color) 0%,
+    var(--light-primary-color) 7%,
+    var(--dark-bg-Color) 7%,
+    var(--dark-bg-Color) 100%
   );
   animation: spin 7s ease-in infinite reverse;
   transform: translate(-50%, -50%);
@@ -220,10 +223,10 @@ section {
   border-radius: 50%;
   background-image: conic-gradient(
     from var(--angel),
-    rgb(72, 166, 167) 0%,
-    rgb(72, 166, 167) 7%,
-    #000016 7%,
-    #000016 100%
+    var(--light-primary-color) 0%,
+    var(--light-primary-color) 7%,
+    var(--dark-bg-Color) 7%,
+    var(--dark-bg-Color) 100%
   );
   animation: spin 3s steps(10) infinite reverse;
   transform: translate(-50%, -50%);
@@ -274,8 +277,8 @@ section {
   height: fit-content;
 }
 .btn a {
-  color: rgb(242, 239, 231);
-  background-color: rgb(72, 166, 167);
+  color: var(--dark-text-color);
+  background-color: var(--light-primary-color);
   font-size: 1em;
   font-weight: 600;
   display: inline-block;
@@ -291,7 +294,7 @@ section {
 .btn:hover a {
   background-color: #239750;
   border-radius: 15px;
-  animation: wigle 500ms linear ;
+  animation: wigle 500ms linear;
   animation-iteration-count: calc(1);
 }
 @keyframes wigle {
@@ -326,17 +329,17 @@ section {
   font-size: 1rem;
   padding: 1rem;
   background-color: transparent;
-  border: solid 2px rgb(72, 166, 167);
+  border: solid 2px var(--light-primary-color);
   border-radius: 50%;
-  color: rgb(72, 166, 167);
+  color: var(--light-primary-color);
   margin: 0.3rem 0.5rem;
   text-decoration: none;
   transition: all 0.3s ease-in-out;
   transform: scale(1) !important;
 }
 .media-icons a:hover {
-  color: rgb(242, 239, 231);
-  background-color: rgb(72, 166, 167);
+  color: var(--dark-text-color);
+  background-color: var(--light-primary-color);
   transform: scale(1.2) !important;
 }
 
@@ -346,7 +349,7 @@ section {
   display: block;
 }
 .about {
-  background-color: #d6d6d6;
+  background-color: var(--light-bg-Color);
 }
 .title {
   width: 100%;
@@ -358,7 +361,7 @@ section {
 
 .section-title {
   position: relative;
-  color: rgb(72, 166, 167);
+  color: var(--light-primary-color);
   font-size: 2.2em;
   font-weight: 800;
   margin-bottom: 60px;
@@ -371,7 +374,7 @@ section {
   left: 50%;
   width: 40px;
   height: 4px;
-  background-color: rgb(72, 166, 167);
+  background-color: var(--light-primary-color);
   transform: translateX(-50%);
   animation: catch 8s ease-in-out infinite;
 }
@@ -384,7 +387,7 @@ section {
   width: 15px;
   height: 15px;
   border-radius: 50%;
-  background-color: rgb(72, 166, 167);
+  background-color: var(--light-primary-color);
   transform: translateX(-50%);
   animation: bounce 8s linear infinite;
 }
@@ -489,13 +492,13 @@ section {
   height: 100%;
   object-fit: cover;
   border-radius: 50% 20% / 10% 40%;
-  box-shadow: 0 0 25px rgb(72, 166, 167);
+  box-shadow: 0 0 25px var(--light-primary-color);
   transition: 0.3s ease;
 }
 .about .content .col-left .img-card img:hover {
   transform: scale(1.05);
-  box-shadow: 0 0 25px rgb(72, 166, 167), 0 0 50px rgb(72, 166, 167),
-    0 0 75px rgb(72, 166, 167);
+  box-shadow: 0 0 25px var(--light-primary-color),
+    0 0 50px var(--light-primary-color), 0 0 75px var(--light-primary-color);
 }
 
 .about .content .col-right .content-title {
@@ -512,7 +515,7 @@ section {
 /* Skills Section */
 
 .skills {
-  background-color: #000016;
+  background-color: var(--dark-bg-Color);
 }
 
 .skills .content {
@@ -521,7 +524,7 @@ section {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  color: rgb(242, 239, 231);
+  color: var(--dark-text-color);
   margin-top: 20px;
 }
 
@@ -551,7 +554,7 @@ section {
   margin-bottom: 5px;
 }
 
-.skills .content .col-right .br .info span {
+.skills .content .col-right .bar .info span {
   font-size: 18px;
   font-weight: 500;
 }
@@ -600,7 +603,7 @@ section {
 
 /* Services */
 .services {
-  background-color: #d6d6d6;
+  background-color: var(--light-bg-Color);
 }
 
 .services .content {
@@ -632,7 +635,7 @@ section {
 }
 
 .services .content .card .service-icon {
-  color: rgb(72, 166, 167);
+  color: var(--light-primary-color);
   font-size: 8rem;
   text-align: center;
   transition: 0.3s linear;
@@ -643,7 +646,7 @@ section {
 }
 
 .services .content .card .info h3 {
-  color: rgb(72, 166, 167);
+  color: var(--light-primary-color);
   font-size: 1.2rem;
   font-weight: 700;
   margin: 10px;
@@ -651,21 +654,21 @@ section {
 }
 
 .services .content .card:hover {
-  background-color: rgb(72, 166, 167);
-  color: rgb(242, 239, 231);
+  background-color: var(--light-primary-color);
+  color: var(--dark-text-color);
   transform: translateY(-5px);
 }
 
 .services .content .card:hover .service-icon,
 .services .content .card:hover .info h3 {
   transform: translateY(-10px);
-  color: rgb(242, 239, 231);
+  color: var(--dark-text-color);
 }
 
 /* Work */
 
 .work {
-  background-color: #000016;
+  background-color: var(--dark-bg-Color);
 }
 
 .work .content {
@@ -706,7 +709,7 @@ section {
 
 /* Contact */
 .contact {
-  background-color: #d6d6d6;
+  background-color: var(--light-bg-Color);
 }
 .contact .content {
   display: flex;
@@ -738,7 +741,7 @@ section {
 }
 
 .contact .content .row .card .contact-icon {
-  color: rgb(72, 166, 167);
+  color: var(--light-primary-color);
   font-size: 4em;
   text-align: center;
   transition: transform 0.5s ease;
@@ -748,7 +751,7 @@ section {
   transform: translateY(-10px);
 }
 
-.contact .content .row .card:hover{
+.contact .content .row .card:hover {
   transform: translateY(-5px);
 }
 
@@ -757,7 +760,7 @@ section {
 }
 
 .contact .content .row .card .info h3 {
-  color: #111;
+  color: var(--light-text-color);
   font-size: 1.2em;
   font-weight: 700;
   margin: 10px;
@@ -778,7 +781,7 @@ section {
 }
 
 .contact-form h3 {
-  color: #111;
+  color: var(--light-text-color);
   font-size: 1.6em;
   font-weight: 600;
   text-align: center;
@@ -793,20 +796,20 @@ section {
 
 .contact-form .input-box input,
 .contact-form .input-box textarea {
-  color: #111;
+  color: var(--light-text-color);
   width: 100%;
   padding: 10px;
   font-size: 1em;
   font-weight: 400;
   outline: none;
-  border: 1px solid #111;
+  border: 1px solid var(--light-text-color);
   border-radius: 5px;
   resize: none;
 }
 
 .contact-form .input-box .send-btn {
-  color: #fff;
-  background: rgb(72, 166, 167);
+  color: var(--dark-text-color);
+  background: var(--light-primary-color);
   display: inline-block;
   font-size: 1.1em;
   font-weight: 500;
@@ -827,8 +830,8 @@ section {
 /* Footer */
 
 .footer {
-  background: #000016;
-  color: #fff;
+  background: var(--dark-bg-Color);
+  color: var(--dark-text-color);
   text-align: center;
   padding: 2em;
 }
@@ -844,7 +847,7 @@ section {
 }
 
 .footer p a {
-  color: rgb(72, 166, 167);
+  color: var(--light-primary-color);
   font-weight: 600;
   text-decoration: none;
 }
@@ -865,7 +868,7 @@ section {
   .navigation.active {
     z-index: 889;
     position: fixed;
-    background-color: rgb(242, 239, 231);
+    background-color: var(--dark-text-color);
     top: 0;
     right: 0;
     width: 380px;
@@ -879,7 +882,7 @@ section {
   }
 
   header .navigation a {
-    color: black;
+    color: var(--light-text-color);
     font-size: 1.2em;
     margin: 10px;
     padding: 10px 40px;
@@ -887,8 +890,8 @@ section {
   }
 
   header .navigation a:hover {
-    background-color: rgb(72, 166, 167);
-    color: rgb(242, 239, 231);
+    background-color: var(--light-primary-color);
+    color: var(--dark-text-color);
     transition: 0.3s ease;
   }
 
@@ -977,8 +980,8 @@ section {
 .scrollToTop-btn {
   z-index: 999;
   position: fixed;
-  background: rgb(72, 166, 167);
-  color: #fff;
+  background: var(--light-primary-color);
+  color: var(--dark-text-color);
   width: 45px;
   height: 45px;
   right: 0;
