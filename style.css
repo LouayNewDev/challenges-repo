@@ -92,6 +92,30 @@ header .sticky .navigation a:hover {
   transform: scaleX(1);
 }
 
+/*////////////working area   //////////////////////////////// */
+select {
+  padding: 10px 20px;
+  font-size: 1rem;
+  border-radius: 8px;
+  border: none;
+  background-color:var(--dark-primary-color);
+  color: var(--dark-text-color);
+  cursor: pointer;
+  outline: none;
+  box-shadow: 0 0 5px rgba(72, 166, 167, 0.7);
+  transition: all ease 0.3s;
+}
+
+select:hover{
+  box-shadow: 0 0 10px rgba(72, 166, 167, 0.7);
+}
+
+
+
+
+
+/* ///////////////////////////////////////// */
+
 section {
   padding: 100px 200px;
 }
@@ -815,16 +839,28 @@ section {
   font-weight: 500;
   text-transform: uppercase;
   letter-spacing: 2px;
-  width: 100%;
+  width: fit-content;
   border: none;
   cursor: pointer;
   transition: 0.5s ease;
+  padding: 10px 20px;
+  margin-top: 10px;
+  border-radius: 15px;
 }
 .send-btn {
   height: 40px;
 }
-.contact-form .input-box .send-btn:hover {
-  background: #235bf6;
+.btn-send{
+  height: fit-content;
+  width: fit-content;
+  position: absolute;
+  left: 50%;
+  transform: translate(-50% , -50%);
+}
+.contact-form .input-box .btn-send:hover .send-btn{
+  background-color: #239750;
+  animation: wigle 500ms ease-in-out;
+  animation-iteration-count: calc(1);
 }
 
 /* Footer */
