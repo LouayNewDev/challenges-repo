@@ -1,0 +1,275 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>🌟 DeepSeek's Particle Network</title>
+    <style>
+        /* ==== Base Styles ==== */
+        body {
+            margin: 0;
+            overflow: hidden;
+            background: radial-gradient(circle at center, #0f0c29, #302b63, #24243e);
+            touch-action: none;
+        }
+
+        canvas {
+            display: block;
+            position: fixed;
+            top: 0;
+            left: 0;
+            z-index: 1;
+        }
+
+        .controls {
+            position: fixed;
+            bottom: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            z-index: 2;
+            display: flex;
+            gap: 10px;
+        }
+
+        button {
+            background: rgba(255, 255, 255, 0.2);
+            color: white;
+            border: none;
+            padding: 8px 16px;
+            border-radius: 20px;
+            font-family: 'Segoe UI', sans-serif;
+            cursor: pointer;
+            backdrop-filter: blur(5px);
+            transition: all 0.3s ease;
+        }
+
+        button:hover {
+            background: rgba(255, 255, 255, 0.3);
+        }
+
+        .info {
+            position: fixed;
+            top: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            color: white;
+            text-align: center;
+            z-index: 2;
+            background: rgba(0, 0, 0, 0.5);
+            padding: 10px 20px;
+            border-radius: 10px;
+            font-family: 'Segoe UI', sans-serif;
+        }
+    </style>
+</head>
+<body>
+    <div class="info">
+        <h1>Particle Network</h1>
+        <p>Move your cursor/finger to interact with the particles</p>
+    </div>
+
+    <div class="controls">
+        <button id="addParticles">Add 100 Particles</button>
+        <button id="changeColor">Change Color Scheme</button>
+        <button id="toggleLines">Toggle Connections</button>
+    </div>
+
+    <canvas id="particleCanvas"></canvas>
+
+    <script>
+        // ===== Configuration =====
+        const config = {
+            particleCount: 150,
+            particleSize: 2,
+            lineDistance: 100,
+            lineWidth: 0.5,
+            forceFactor: 0.1,
+            mouseRadius: 100,
+            mouseForce: -0.5,
+            colorThemes: [
+                { bg: ['#0f0c29', '#302b63', '#24243e'], particles: '#8e94f2', lines: 'rgba(142, 148, 242, 0.2)' },
+                { bg: ['#1a1a2e', '#16213e', '#0f3460'], particles: '#e94560', lines: 'rgba(233, 69, 96, 0.2)' },
+                { bg: ['#0d324d', '#7f5a83'], particles: '#a188a6', lines: 'rgba(161, 136, 166, 0.2)' },
+                { bg: ['#000000', '#434343'], particles: '#00d2ff', lines: 'rgba(0, 210, 255, 0.2)' }
+            ],
+            currentTheme: 0
+        };
+
+        // ===== Canvas Setup =====
+        const canvas = document.getElementById('particleCanvas');
+        const ctx = canvas.getContext('2d');
+        let width = window.innerWidth;
+        let height = window.innerHeight;
+        canvas.width = width;
+        canvas.height = height;
+
+        // ===== Particle System =====
+        let particles = [];
+        let mouse = { x: null, y: null, radius: config.mouseRadius };
+        let showLines = true;
+        let animationId;
+
+        class Particle {
+            constructor(x, y) {
+                this.x = x || Math.random() * width;
+                this.y = y || Math.random() * height;
+                this.size = config.particleSize;
+                this.baseX = this.x;
+                this.baseY = this.y;
+                this.density = (Math.random() * 30) + 1;
+                this.vx = (Math.random() - 0.5) * 2;
+                this.vy = (Math.random() - 0.5) * 2;
+                this.color = config.colorThemes[config.currentTheme].particles;
+            }
+
+            update() {
+                // Mouse interaction
+                let dx = mouse.x - this.x;
+                let dy = mouse.y - this.y;
+                let distance = Math.sqrt(dx * dx + dy * dy);
+                
+                if (distance < mouse.radius) {
+                    let forceDirectionX = dx / distance;
+                    let forceDirectionY = dy / distance;
+                    let force = (mouse.radius - distance) / mouse.radius;
+                    
+                    this.vx += forceDirectionX * force * config.mouseForce * this.density;
+                    this.vy += forceDirectionY * force * config.mouseForce * this.density;
+                }
+
+                // Apply velocity with damping
+                this.x += this.vx;
+                this.y += this.vy;
+                this.vx *= 0.95;
+                this.vy *= 0.95;
+
+                // Bounce off walls
+                if (this.x < 0 || this.x > width) this.vx *= -0.5;
+                if (this.y < 0 || this.y > height) this.vy *= -0.5;
+
+                // Return to base position
+                let returnForce = 0.01;
+                this.x += (this.baseX - this.x) * returnForce;
+                this.y += (this.baseY - this.y) * returnForce;
+            }
+
+            draw() {
+                ctx.beginPath();
+                ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
+                ctx.closePath();
+                ctx.fillStyle = this.color;
+                ctx.fill();
+            }
+        }
+
+        // ===== Initialize Particles =====
+        function initParticles(count = config.particleCount) {
+            particles = [];
+            for (let i = 0; i < count; i++) {
+                particles.push(new Particle());
+            }
+        }
+
+        // ===== Draw Connections =====
+        function drawConnections() {
+            for (let i = 0; i < particles.length; i++) {
+                for (let j = i + 1; j < particles.length; j++) {
+                    const dx = particles[i].x - particles[j].x;
+                    const dy = particles[i].y - particles[j].y;
+                    const distance = Math.sqrt(dx * dx + dy * dy);
+
+                    if (distance < config.lineDistance) {
+                        const opacity = 1 - (distance / config.lineDistance);
+                        ctx.strokeStyle = config.colorThemes[config.currentTheme].lines.replace('0.2', opacity.toFixed(2));
+                        ctx.lineWidth = config.lineWidth;
+                        ctx.beginPath();
+                        ctx.moveTo(particles[i].x, particles[i].y);
+                        ctx.lineTo(particles[j].x, particles[j].y);
+                        ctx.stroke();
+                    }
+                }
+            }
+        }
+
+        // ===== Animation Loop =====
+        function animate() {
+            ctx.clearRect(0, 0, width, height);
+
+            // Update and draw particles
+            particles.forEach(particle => {
+                particle.update();
+                particle.draw();
+            });
+
+            // Draw connections if enabled
+            if (showLines) {
+                drawConnections();
+            }
+
+            animationId = requestAnimationFrame(animate);
+        }
+
+        // ===== Event Handlers =====
+        function handleMouseMove(e) {
+            mouse.x = e.clientX || e.touches[0].clientX;
+            mouse.y = e.clientY || e.touches[0].clientY;
+        }
+
+        function handleMouseLeave() {
+            mouse.x = null;
+            mouse.y = null;
+        }
+
+        function handleResize() {
+            width = window.innerWidth;
+            height = window.innerHeight;
+            canvas.width = width;
+            canvas.height = height;
+            initParticles();
+        }
+
+        function changeColorTheme() {
+            config.currentTheme = (config.currentTheme + 1) % config.colorThemes.length;
+            const theme = config.colorThemes[config.currentTheme];
+            
+            // Update background gradient
+            document.body.style.background = `radial-gradient(circle at center, ${theme.bg.join(', ')})`;
+            
+            // Update particle colors
+            particles.forEach(p => {
+                p.color = theme.particles;
+            });
+        }
+
+        // ===== Initialize =====
+        function init() {
+            initParticles();
+            animate();
+
+            // Event listeners
+            window.addEventListener('mousemove', handleMouseMove);
+            window.addEventListener('touchmove', handleMouseMove);
+            window.addEventListener('mouseout', handleMouseLeave);
+            window.addEventListener('resize', handleResize);
+
+            // Control buttons
+            document.getElementById('addParticles').addEventListener('click', () => {
+                initParticles(particles.length + 100);
+            });
+
+            document.getElementById('changeColor').addEventListener('click', changeColorTheme);
+
+            document.getElementById('toggleLines').addEventListener('click', () => {
+                showLines = !showLines;
+            });
+        }
+
+        init();
+
+        // Cleanup on exit
+        window.addEventListener('beforeunload', () => {
+            cancelAnimationFrame(animationId);
+        });
+    </script>
+</body>
+</html>

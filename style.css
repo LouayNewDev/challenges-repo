@@ -626,6 +626,7 @@ section {
 }
 
 /* Services */
+
 .services {
   background-color: var(--light-bg-Color);
 }
@@ -644,32 +645,74 @@ section {
   text-align: center;
 }
 
+/* Flip card modifications */
 .services .content .card {
-  background-color: #fff;
-  width: 340px;
+  background-color: transparent; /* Changed from #fff */
+  width: 300px;
+  height: 300px; /* Added fixed height */
   margin: 10px;
-  padding: 25px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  flex-direction: column;
+  padding: 0; /* Removed padding */
+  perspective: 1000px;
   border-radius: 10px;
-  box-shadow: 0 5px 25px rgba(1 1 1/15%);
-  transition: 0.3s linear;
 }
 
-.services .content .card .service-icon {
+.flip-card-inner {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  transition: transform 0.6s;
+  transform-style: preserve-3d;
+  box-shadow: 0 5px 25px rgba(1 1 1/15%);
+  border-radius: 10px;
+}
+
+.services .content .card:hover .flip-card-inner {
+  transform: rotateY(180deg) translateY(-5px); /* Combines flip and lift */
+}
+
+.flip-card-front,
+.flip-card-back {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  padding: 25px;
+  backface-visibility: hidden;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  border-radius: 10px;
+}
+
+.flip-card-front {
+  background-color: #fff;
+}
+
+.flip-card-back {
+  background-color: var(--light-primary-color);
+  color: var(--dark-text-color);
+  transform: rotateY(180deg);
+  /* New visibility enhancements */
+  padding: 30px;
+  line-height: 1,2;
+}
+.flip-card-back p {
+  font-size: 1rem;
+  font-weight: 700;
+  max-width: 90%;
+  text-align: center;
+  margin: 0 auto;
+}
+
+/* Preserved your original styles */
+.service-icon {
   color: var(--light-primary-color);
   font-size: 8rem;
   text-align: center;
   transition: 0.3s linear;
 }
 
-.services .content .card .info {
-  text-align: center;
-}
-
-.services .content .card .info h3 {
+.info h3 {
   color: var(--light-primary-color);
   font-size: 1.2rem;
   font-weight: 700;
@@ -677,10 +720,9 @@ section {
   transition: 0.3s linear;
 }
 
-.services .content .card:hover {
+/* Enhanced hover effects */
+.services .content .card:hover .flip-card-front {
   background-color: var(--light-primary-color);
-  color: var(--dark-text-color);
-  transform: translateY(-5px);
 }
 
 .services .content .card:hover .service-icon,
@@ -693,6 +735,7 @@ section {
 
 .work {
   background-color: var(--dark-bg-Color);
+  padding: 60px 0;
 }
 
 .work .content {
@@ -701,19 +744,28 @@ section {
   flex-direction: row;
   flex-wrap: wrap;
   margin-top: 20px;
+  gap: 25px;
 }
 
 .work .content .card {
   width: 340px;
-  margin: 15px;
+  margin: 0;
+  background: #2a2a2a;
+  border-radius: 10px;
+  overflow: hidden;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.work .content .card:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 15px 30px rgba(0, 0, 0, 0.3);
 }
 
 .work .content .card .card-img {
   position: relative;
   width: 100%;
-  height: 260px;
+  height: 200px;
   overflow: hidden;
-  border-radius: 10px;
 }
 
 .work .content .card .card-img img {
@@ -723,13 +775,84 @@ section {
   width: 100%;
   height: 100%;
   object-fit: cover;
-  border-radius: 10px;
-  transition: 0.3s linear;
+  transition: transform 0.5s ease;
 }
 
-.work .content .card .card-img img:hover {
-  transform: scale(1.2);
+.work .content .card:hover .card-img img {
+  transform: scale(1.05);
 }
+
+.card-content {
+  padding: 20px;
+  color: white;
+}
+
+.card-content h3 {
+  font-size: 1.4rem;
+  margin-bottom: 10px;
+  color: #fff;
+}
+
+.card-content p {
+  font-size: 0.95rem;
+  line-height: 1.5;
+  margin-bottom: 20px;
+  color: #ccc;
+}
+
+.view-btn {
+  display: inline-block;
+  padding: 10px 20px;
+  background: var(--light-primary-color);
+  color: #111;
+  text-decoration: none;
+  border-radius: 5px;
+  font-weight: 600;
+  transition: all 0.3s ease;
+}
+
+.view-btn:hover {
+  background: #fff;
+  transform: translateY(-2px);
+  box-shadow: 0 5px 15px rgba(255, 255, 255, 0.1);
+}
+.work {
+  background-color: var(--dark-bg-Color);
+  padding: 80px 0;
+}
+
+.work .content {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 30px;
+  max-width: 1200px;
+  margin: 40px auto 0;
+}
+
+.work .content .card {
+  width: calc(33.333% - 30px); /* 3 cards per row */
+  margin: 0;
+}
+
+/* Last 2 cards in second row */
+.work .content .card:nth-child(n+4) {
+  width: calc(50% - 30px); 
+}
+
+/* Responsive adjustments */
+@media (max-width: 992px) {
+  .work .content .card {
+    width: calc(50% - 30px); /* 2 cards per row on tablets */
+  }
+}
+
+@media (max-width: 768px) {
+  .work .content .card {
+    width: 100%; /* 1 card per row on mobile */
+  }
+}
+
 
 /* Contact */
 .contact {
