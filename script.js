@@ -22,6 +22,18 @@ function sendmail () {
     )
 }
 
+/* :root {
+  --light-bg-color: #b6d6d6;
+  --light-primary-color: rgb(72, 166, 167);
+  --light-text-color: black;
+  --dark-bg-color: #000016;
+  --dark-bg-color2: #101010;
+  --dark-text-color: rgb(242, 239, 231);
+  --dark-primary-color: #004a50;
+} */
+
+
+
 
 // // #1
 // function CreateNArray(repeat) {

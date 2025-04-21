@@ -1,82 +1,87 @@
-
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <title>Theme Switcher</title>
-  <style>
-    body.light-mode {
-      --bg-color: #f4f4f4;
-      --text-color: #111;
-    }
+  <head>
+    <meta charset="UTF-8" />
+    <title>Theme Switcher</title>
+    <style>
+      body.light-mode {
+        --bg-color: #f4f4f4;
+        --text-color: #111;
+      }
 
-    body.dark-mode {
-      --bg-color: #0f0f1a;
-      --text-color: #f1f1f1;
-    }
+      body.dark-mode {
+        --bg-color: #0f0f1a;
+        --text-color: #f1f1f1;
+      }
 
-    body.mixed-mode {
-      --bg-color: linear-gradient(to right, #0f0f1a 50%, #f4f4f4 50%);
-      --text-color: #0ff;
-    }
+      body.mixed-mode {
+        --bg-color: linear-gradient(to right, #0f0f1a 50%, #f4f4f4 50%);
+        --text-color: #0ff;
+      }
 
-    body {
-      margin: 0;
-      padding: 40px;
-      font-family: sans-serif;
-      background: var(--bg-color);
-      color: var(--text-color);
-      transition: 0.5s ease-in-out;
-    }
+      body {
+        margin: 0;
+        padding: 40px;
+        font-family: sans-serif;
+        background: var(--bg-color);
+        color: var(--text-color);
+        transition: 0.5s ease-in-out;
+      }
 
-    .container {
-      max-width: 600px;
-      margin: auto;
-      text-align: center;
-    }
+      .container {
+        max-width: 600px;
+        margin: auto;
+        text-align: center;
+      }
 
-    select {
-      padding: 10px 20px;
-      font-size: 1rem;
-      border-radius: 8px;
-      border: none;
-      background-color: #333;
-      color: white;
-      cursor: pointer;
-      outline: none;
-      margin-top: 30px;
-    }
+      select {
+        padding: 10px 20px;
+        font-size: 1rem;
+        border-radius: 8px;
+        border: none;
+        background-color: #333;
+        color: white;
+        cursor: pointer;
+        outline: none;
+        margin-top: 30px;
+      }
 
-    select:focus {
-      box-shadow: 0 0 10px rgba(72, 166, 167, 0.7);
-    }
+      select:focus {
+        box-shadow: 0 0 10px rgba(72, 166, 167, 0.7);
+      }
 
-    h1 {
-      font-size: 2.5rem;
-      margin-bottom: 20px;
-    }
+      h1 {
+        font-size: 2.5rem;
+        margin-bottom: 20px;
+      }
 
-    p {
-      font-size: 1.2rem;
-    }
-  </style>
-</head>
-<body class="light-mode">
-  <div class="container">
-    <h1>🌗 Theme Switcher</h1>
-    <p>Choose between Light, Dark, or Mixed mode:</p>
-    <select id="theme-select">
-      <option value="light">🌞 Light</option>
-      <option value="dark">🌚 Dark</option>
-      <option value="mixed">🌗 Mixed</option>
-    </select>
-  </div>
+      p {
+        font-size: 1.2rem;
+      }
+    </style>
+  </head>
+  <body class="light-mode">
+    <div class="container">
+      <h1>🌗 Theme Switcher</h1>
+      <p>Choose between Light, Dark, or Mixed mode:</p>
+      <select id="theme-select">
+        <option value="light">🌞 Light</option>
+        <option value="dark">🌚 Dark</option>
+        <option value="mixed">🌗 Mixed</option>
+      </select>
+    </div>
 
-  <script>
-    document.getElementById('theme-select').addEventListener('change', function () {
-      document.body.classList.remove('light-mode', 'dark-mode', 'mixed-mode');
-      document.body.classList.add(this.value + '-mode');
-    });
-  </script>
-</body>
+    <script>
+      document
+        .getElementById("theme-select")
+        .addEventListener("change", function () {
+          document.body.classList.remove(
+            "light-mode",
+            "dark-mode",
+            "mixed-mode"
+          );
+          document.body.classList.add(this.value + "-mode");
+        });
+    </script>
+  </body>
 </html>

@@ -22,16 +22,23 @@
     </script>
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 </head>
-<body class="dark">
-
+<body>
 
     <header>
         <a href="#main" class="brand" data-aos="zoom-in" data-aos-duration="1000">Louay Djeddou</a>
-        <select id="theme-select">
-            <option value="mixed">Dark</option> 
-            <option value="dark">Default</option>
-            <option value="light">Light</option>
-        </select>
+        <div class="theme-switcher">
+            <i class="fas fa-cog settings-icon"></i>
+            <div class="theme-dropdown">
+                <div class="theme-toggle">
+                    <span>Dark Mode</span>
+                    <label class="switch">
+                        <input type="checkbox" id="theme-toggle">
+                        <span class="slider round"></span>
+                    </label>
+                </div>
+                <button class="default-theme-btn">Default Theme</button>
+            </div>
+        </div>
         <div class="menu-btn"></div>
         <div class="navigation">
             <a href="#main" data-aos="fade-up" data-aos-duration="1000" data-aos-delay="100">Home</a>

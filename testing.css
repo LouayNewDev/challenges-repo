@@ -1,5 +1,5 @@
 .services {
-    background-color: #ececec;
+  background-color: #ececec;
 }
 
 .services .content {
@@ -60,13 +60,12 @@
   color: rgb(242, 239, 231);
 }
 
-
-.flip{
-    backface-visibility: hidden;
-    transition: all 5s ease;
-    transform-style: preserve-3d;
-    position: relative;
+.flip {
+  backface-visibility: hidden;
+  transition: all 5s ease;
+  transform-style: preserve-3d;
+  position: relative;
 }
-.flip:hover{
-    transform: rotatey(180deg);
+.flip:hover {
+  transform: rotatey(180deg);
 }
