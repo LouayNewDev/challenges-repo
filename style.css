@@ -5,30 +5,23 @@
   font-weight: normal;
   font-style: normal;
 }
-/* :root {
-  --light-bg-color: #b6d6d6;
-  --light-primary-color: rgb(72, 166, 167);
-  --light-text-color: black;
-  --dark-bg-color: #000016;
-  --dark-bg-color2: #101010;
-  --dark-text-color: rgb(242, 239, 231);
-  --dark-primary-color: #004a50;
-} */
 
 :root {
   /* Light Mode */
   --light-bg-color: #b6d6d6;
-  --light-primary-color: rgb(72, 166, 167);
+  --light-bg-color2: #aec7c7; /*not used*/
+  --light-primary-color: rgb(72, 166, 168);
   --light-text-color: black;
 
   /* Dark Mode */
   --dark-bg-color: #000016;
-  --dark-bg-color2: #101010;
+  --dark-bg-color2: #101010; /* not used*/
   --dark-text-color: rgb(242, 239, 231);
-  --dark-primary-color: #004a50;
+  --dark-primary-color: #004a50; /*not used*/
 
   /* Active Theme Defaults (Dark) */
   --bg-color: var(--dark-bg-color);
+  --bg-color2: var(--light-bg-color);
   --text-color: var(--dark-text-color);
   --primary-color: var(--dark-primary-color);
 }
@@ -135,9 +128,8 @@ header .sticky .navigation a:hover {
   padding: 8px;
 }
 
-.settings-icon:hover {
+.theme-switcher:hover .settings-icon{
   transform: rotate(90deg);
-  color: var(--primary-color);
 }
 
 /* Dropdown Panel */
@@ -336,7 +328,7 @@ section {
   border: 5px solid var(--dark-bg-color);
   position: relative;
   z-index: 5;
-  box-shadow: 0 0 25px var(--dark-bg-color2);
+  box-shadow: 0 0 25px var(--dark-bg-color);
 }
 
 .loader {
@@ -514,7 +506,22 @@ section {
 .wave-haikei {
   width: 100%;
   display: block;
+  height: fit-content;
 }
+.upper-wave{
+  fill: var(--bg-color);
+}
+.lower-wave{
+  fill: var(--bg-color2);
+}
+.upper-wave2{
+  fill: var(--bg-color2);
+}
+.lower-wave2{
+  fill: var(--bg-color);
+}
+
+
 .about {
   background-color: var(--light-bg-color);
 }

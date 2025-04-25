@@ -22,15 +22,25 @@ function sendmail () {
     )
 }
 
-/* :root {
-  --light-bg-color: #b6d6d6;
-  --light-primary-color: rgb(72, 166, 167);
-  --light-text-color: black;
-  --dark-bg-color: #000016;
-  --dark-bg-color2: #101010;
-  --dark-text-color: rgb(242, 239, 231);
-  --dark-primary-color: #004a50;
-} */
+
+const root = document.documentElement;
+const toggleSwitch = document.querySelector('.theme-switch input[type="checkbox"]');
+const currentTheme = localStorage.getItem('theme') ? localStorage.getItem('theme') : null;
+
+
+///* :root {
+//   /* Light Mode */
+//   --light-bg-color: #b6d6d6;
+//   --light-bg-color2: #aec7c7; /*not used*/
+//   --light-primary-color: rgb(72, 166, 168);
+//   --light-text-color: black;
+
+//   /* Dark Mode */
+//   --dark-bg-color: #000016;
+//   --dark-bg-color2: #101010; /* not used*/
+//   --dark-text-color: rgb(242, 239, 231);
+//   --dark-primary-color: #004a50; /*not used*/
+//} */
 
 
 
